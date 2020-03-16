@@ -155,7 +155,6 @@ print('-----------------------------------------------------')
 
 #problem 10
 
-
 def triangleArea(s1, s2, s3):
     s = (s1 + s2 + s3)/2
     return (s * (s - s1) * (s - s2) * (s - s3))**0.5
@@ -167,7 +166,6 @@ test_triangleArea()
 print('-----------------------------------------------------')
 
 #problem 11
-
 
 def triangleArea(x1, y1, x2, y2, x3, y3):
     s1 = ((y2-y1)**2+(x2-x1)**2)**0.5
@@ -181,3 +179,135 @@ def test_triangleArea():
 
 test_triangleArea()
 print('-----------------------------------------------------')
+
+#problem12
+
+
+def lineIntersect(m1, b1, m2, b2):
+     if (m1 == m2): 
+         return None  
+     if (m1 != m2):
+         x = (b2-b1)/(m1-m2)
+         return x
+def test_lineIntersect():
+    assert(lineIntersect(0,1,-10,5) == 0.4)
+    assert(lineIntersect(0,1,0,5) == None)
+    assert(lineIntersect(0,1,0,1) == None)
+    print("Problem 12 all tests passed")
+test_lineIntersect()
+print('-----------------------------------------------------')
+
+#problem 13
+'''
+m1 = int(input("m1="))
+b1 = int(input("b1="))
+m2 = int(input("m2="))
+b2 = int(input("b2="))
+m3 = int(input("m3="))
+b3 = int(input("b3="))
+
+def threeLinesArea(m1, b1, m2, b2, m3, b3):
+    if ((m1 == m2) or (m2 == m3) or (m1 == m3)):
+        return None
+    else: 
+        x1 = (b2-b1)/(m1-m2)
+        x2 = (b3-b2)/(m2-m3)
+        x3 = (b3-b1)/(m1-m3)
+        return x1 
+        return x2
+        return x3
+        
+        def triangleArea(m1, b1, m2, b2, m3, b3):
+             y1 = (m1*x1) + b1
+             y2 = (m2*x2) + b2
+             y3 = (m3*x3) + b3
+             s1 = ((y2-y1)**2+(x2-x1)**2)**0.5
+             s2 = ((y3-y1)**2+(x3-x1)**2)**0.5
+             s3 = ((y3-y2)**2+(x3-x2)**2)**0.5
+             s = (s1 + s2 + s3)/2
+             return (s * (s - s1) * (s - s2) * (s - s3))**0.5
+
+print(threeLinesArea(m1, b1, m2, b2, m3, b3))
+'''
+#problem 14
+# Function for nth Fibonacci number 
+
+
+def Fibonacci(n): 
+    if n<0: 
+        print("Incorrect input") 
+    elif n==1: 
+        return 0
+    elif n==2: 
+        return 1
+    else: 
+        return Fibonacci(n-1)+Fibonacci(n-2) 
+def test_Fibonacci():
+    assert(Fibonacci(2) == 1)
+    assert(Fibonacci(4) == 2)
+    assert(Fibonacci(8) == 13)
+    print("Problem 14 all test passed")
+test_Fibonacci()  
+print('-----------------------------------------------------')
+
+
+#problem 15
+
+a = input("Enter a number: ")
+import string
+
+def isEvenPositiveInt(x):
+    s = "" # declaring empty variable string
+    for i in x: # looping through x all string characters ("10" = '1', '0')
+        if i in string.digits: # string.digits = "0123456789"
+            s += i
+        else:
+            return False # if input contains non-integer, function ends here
+    s = int(s)
+    if s > 0 and s % 2 == 0: return True
+    else: return False
+        
+
+print(isEvenPositiveInt(a))
+print('-----------------------------------------------------')
+
+#problem 16
+
+def nearestBusStop(s): 
+    return ((s+3)//8)*8
+
+def test_nearestBusStop():
+    assert(nearestBusStop(0) == 0)
+    assert(nearestBusStop(8) == 8)
+    assert(nearestBusStop(12) == 8)
+    assert(nearestBusStop(13) == 16)
+    print("Problem 16 all test passed")
+
+test_nearestBusStop()
+print('-----------------------------------------------------')
+
+#problem 17
+
+def numberOfPoolBalls(r):
+    return (r*(r + 1))/2
+
+def test_numberOfPoolBalls():
+    assert(numberOfPoolBalls(1) == 1)
+    assert(numberOfPoolBalls(2) == 3)
+    assert(numberOfPoolBalls(3) == 6)
+    print("Problem 17 all test passed")
+
+test_numberOfPoolBalls()
+
+print('-----------------------------------------------------')
+
+#problem 18
+a = int(input("Enter number of balls: "))
+import math
+def numberOfPoolBallRows(b):
+    return math.ceil((-1 + math.sqrt(1 + 8 * b)) / 2)
+
+
+    
+
+print(numberOfPoolBallRows(a)) 
