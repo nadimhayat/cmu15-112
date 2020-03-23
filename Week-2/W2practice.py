@@ -108,3 +108,158 @@ def addPrime(x):
 
 print(addPrime(14))
 
+#problem 6
+
+def isPerfectNumber(n):
+    if (n <= 1): return False
+    divisorSum = 0
+    maxFactor = round(n**1/2)
+    for divisor in range(1, maxFactor+1):
+        if (n % divisor == 0):
+            divisorSum += divisor
+    return (divisorSum == n)
+
+def nthPerfectNumber(n):
+    guess = 0 # all numbers starting from 0
+    found = 0 # perfect number
+    count = 0 # counts perfect numbers
+    while (count < n):
+        guess += 1
+        if (isPerfectNumber(guess)):
+            found = guess
+            count += 1
+    return found
+
+
+print(nthPerfectNumber(2))
+
+#problem 7
+def longestDigitRun(n):
+    highest_streak = 0
+    highest_digit = 0
+    streak = 0
+    while (n > 0): 
+        last_digit = n % 10
+        n //= 10
+        if (last_digit == n % 10):
+            streak += 1
+            if streak > highest_streak:
+                highest_streak = streak
+                highest_digit = last_digit
+            elif highest_streak == streak:
+                highest_digit = min(highest_digit, last_digit)
+        else:
+            streak = 0
+
+    return highest_digit
+
+print(longestDigitRun(233113))
+
+#problem 8
+def longestIncreasingRun(n):
+    highest_streak = 0
+    increasing_digit = 0
+    streak = 0
+    p = 1
+    while (n > 0): #1232
+        last_digit = n % 10 #3
+        n //= 10 
+        if (last_digit > n % 10):
+            streak += 1
+            if streak > highest_streak:
+                highest_streak = streak
+                increasing_digit = ((n % 10)*10**p) + last_digit
+                p += 1
+            last_digit = increasing_digit
+        else:
+            streak = 0
+
+    return increasing_digit
+
+print(longestDigitRun(12355456))
+
+#problem 9
+n = int(input("Input N: "))
+def palindrome(n):
+    num = n
+    rev = 0
+    d = 0
+    while n > 0:
+        d = n%10
+        n = n//10
+        rev = rev*10 + d
+    if num == rev:
+        return True
+    else: return False
+        
+def prime(n):
+    if (n < 2):
+        return False
+    if (n == 2):
+        return True
+    if (n % 2 == 0):
+        return False
+    maxFactor = round(n**0.5)
+    for factor in range(3,maxFactor+1,2):
+        if (n % factor == 0):
+            return False
+    return True
+def nthPalindromePrime(n):
+    found = 0
+    guess = 0
+    while (found <= n):
+        guess += 1
+        if (palindrome(guess) and prime(guess)):
+            found += 1
+    return guess
+print(nthPalindromePrime(n))
+
+#problem 10
+def prime(n):
+    if (n < 2):
+        return False
+    if (n == 2):
+        return True
+    if (n % 2 == 0):
+        return False
+    maxFactor = round(n**0.5)
+    for factor in range(3,maxFactor+1,2):
+        if (n % factor == 0):
+            return False
+    return True
+
+
+def digitCount(n):
+    count = 0
+    n = abs(n)
+    while (n>=10):
+        n = n//10
+        count += 1
+    return count + 1   
+
+
+def leftTruncatable(n):
+    d = 0 
+    dcount = digitCount(n) - 1                
+    while n > 0:  
+        if (prime(n)): #4 6773 = (10**4)*4 % 10**4--> 6773 --> 773 --> 1
+            d = n % (10**dcount)
+            n = n // 10
+            if d > 0: 
+                if (prime(d)):
+                    return True
+                else: return False
+            dcount -= 1
+        else:
+            return False
+        return True
+def nthLeftTruncatablePrime(n): #10 53
+    found = 0
+    guess = 0
+    while (found <= n):
+        guess += 1
+        if (leftTruncatable(guess)):
+            found += 1
+    return guess
+ 
+print(nthLeftTruncatablePrime(10))
