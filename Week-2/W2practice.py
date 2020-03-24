@@ -263,3 +263,150 @@ def nthLeftTruncatablePrime(n): #10 53
     return guess
  
 print(nthLeftTruncatablePrime(10))
+
+#problem 11
+def prime(n):
+    if (n < 2):
+        return False
+    if (n == 2):
+        return True
+    if (n % 2 == 0):
+        return False
+    maxFactor = round(n**0.5)
+    for factor in range(3,maxFactor+1,2):
+        if (n % factor == 0):
+            return False
+    return True
+
+def CarolPrime(k):
+    n = ( (((2**k) - 1)**2) - 2) 
+    print(n)
+    if (prime(n)):
+        return True
+    else: return False
+
+print(CarolPrime(15))
+
+#Problem 12
+
+
+def sumOfSquaresOfDigits(n): #777
+    num = 0
+    while n > 0:
+        d = n % 10
+        num += d**2
+        n //= 10
+    return num
+
+def isHappyNumber(a): #97
+    a = sumOfSquaresOfDigits(a)
+    if a == 0: return 1
+    if a == 1: return True
+    while a >= 10:
+        a = sumOfSquaresOfDigits(a)
+        print(a)
+    if a == 1: 
+        return True
+    elif a == 4: 
+        return False 
+
+
+def nthHappyNumber(n):
+    found = 0
+    guess = 0
+    while (found <= n):
+        guess += 1
+        if (isHappyNumber(guess)):
+            found += 1
+    return guess
+
+print(nthHappyNumber(5))
+
+#problem 13
+def most_frequent_digit(n):
+    best_count = 0
+    best_digit = 0
+    for x in range(10):
+        m = n
+        count = 0
+        print(count)
+        while m > 0:
+            digit = m % 10
+            m //= 10
+            if x == digit:
+                count += 1
+        if count > best_count:
+            best_count = count
+            best_digit = x
+    return best_digit
+
+
+def test_most_frequent_digit():
+    assert(most_frequent_digit(1123) == 1)
+    assert(most_frequent_digit(2211) == 1)
+    assert(most_frequent_digit(18822) == 2)
+    assert(most_frequent_digit(100000) == 0)
+    print("Problem 1: Solved!")
+
+test_most_frequent_digit()
+
+#problem 14
+import math
+def factor(n):
+    a = 0
+    b = 0
+    for i in range(2, n): #12
+        if (n % i == 0):
+            a = math.sqrt(i)
+            b = i**(1/3)
+            if int(root + 0.5) ** 2 == i:
+                a = root  
+                continue
+            else: 
+                a = 1
+            if int(root1 + 0.5) ** 3 == i:
+                b = root1
+                break
+            else: 
+                b = 1
+    return a, b
+
+print(factor(64))
+            
+
+def is_powerful_number(n):
+    #n = a**2 * b**3
+    a = factor(n)
+    if a is None:
+        return False
+    if (n % a == 0) and (n % a**2 == 0):
+        return True
+    else:
+        return False
+
+def test_is_powerful_number():
+    assert(is_powerful_number(4) == True)
+    assert(is_powerful_number(8) == True)
+    assert(is_powerful_number(46) == False)
+    assert(is_powerful_number(0) == False)
+    assert(is_powerful_number(12) == False)
+    assert(is_powerful_number(288) == True)
+    print("is_powerful_number() passed!")
+
+
+test_is_powerful_number()
+
+
+def nthPowerfulNumber(n): #10 53
+    found = 0
+    guess = 0
+    while (found <= n):
+        guess += 1
+        if (is_powerful_number(guess)):
+            found += 1
+    return guess
+
+print(factor(23))
+
+
+
