@@ -64,7 +64,7 @@ def uneq_interleave(s1, s2):
         final = initial + latter
     
     return final
-
+print(uneq_interleave("abcde", "abcdefgh"))
 def test_Interleave():
     assert(uneq_interleave("abcdefg", "abcdefg") == "aabbccddeeffgg")
     assert(uneq_interleave("abcde", "abcdefgh") == "aabbccddeefgh")
