@@ -53,7 +53,8 @@ def longestDigitRun(n):
 print(longestDigitRun(233113))
 '''
 
-# n = int(input("Input N: "))
+###### n = int(input("Input N: "))
+'''
 import math
 def factor(n):
     a = 0
@@ -64,12 +65,10 @@ def factor(n):
             b = i**(1/3)
             if int(root + 0.5) ** 2 == i:
                 a = root  
-                continue
             else: 
                 a = 1
             if int(root1 + 0.5) ** 3 == i:
                 b = root1
-                break
             else: 
                 b = 1
     return a, b
@@ -110,3 +109,22 @@ def nthPowerfulNumber(n): #10 53
     return guess
 
 print(factor(23))
+'''
+
+
+s1 = 'pyt'
+s2 = 'hon'
+
+s3 = "" + s2
+print(s3)
+
+def test_Interleave():
+    assert(uneq_interleave("abcdefg", "abcdefg") == "aabbccddeeffgg")
+    assert(uneq_interleave("abcde", "abcdefgh") == "aabbccddeefgh")
+    assert(uneq_interleave("abcdefgh","abcde") == "aabbccddeefgh")
+    assert(uneq_interleave("Smlksgeneg n a!", "a ie re gsadhm") ==
+                      "Sam likes green eggs and ham!")
+    assert(uneq_interleave("","") == "")
+    print("Problem 2 all tests Passed!")
+
+test_Interleave()
