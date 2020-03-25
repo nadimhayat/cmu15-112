@@ -50,21 +50,23 @@ def uneq_interleave(s1, s2):
     latter = ""
     if len(s1) == len(s2): 
         return eq_interleave(s1, s2)
-    elif len(s2) > len(s1): #s1=abc s2=abcde
-        num = len(s2) - len(s1) #5-3=2 
+    elif len(s2) > len(s1): 
+        num = len(s2) - len(s1) 
         s2 = (s2[0:len(s2)-num])
-        initial = eq_interleave(s1, s2) #aabbcc de
+        initial = eq_interleave(s1, s2) 
         latter = s2[len(s2)-num:len(s2)]
         final = initial + latter
     elif len(s1) > len(s2):
-        num = len(s1) - len(s2) #5-3=2 
+        num = len(s1) - len(s2)
         s1 = (s1[0:len(s1)-num])
-        initial = eq_interleave(s1, s2) #abc def gh
+        initial = eq_interleave(s1, s2) 
         latter = s1[len(s1)-num:len(s1)]
         final = initial + latter
     
     return final
 print(uneq_interleave("abcde", "abcdefgh"))
+
+'''
 def test_Interleave():
     assert(uneq_interleave("abcdefg", "abcdefg") == "aabbccddeeffgg")
     assert(uneq_interleave("abcde", "abcdefgh") == "aabbccddeefgh")
@@ -75,3 +77,6 @@ def test_Interleave():
     print("Problem 2 all tests Passed!")
 
 test_Interleave()
+'''
+#problem 3
+def hasBalancedParentheses(s):
